@@ -3,8 +3,9 @@ import './App.css';
 
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
+import axios from 'axios';
 
 function App() {
   const [pvA, setpvA] = useState("");
@@ -14,35 +15,55 @@ function App() {
   const [pvG, setpvG] = useState("");
 
 
+
+  const [data6, setdata] = useState(''); 
+
+  const [age, setAge]=  useState('');
+  const [salary, setSalary] =useState('');
+  const [hobby, setHobby]= useState('');
+                             
+                              
+                            
+
+
+  useEffect (() => {
+  axios.get('https://script.google.com/macros/s/AKfycby1V7NKaK0zlQyfu1ow84q4MdCJUU8EsYv2VK0BTJmJm9iDW6dKR03NmvxWltUCjWcuCg/exec?action=getUsers')
+  .then (res=> console.log(res)) ;
+
+  }, []);
+
+var data12 = parseInt( pvA)/ parseInt( pvB) ;
+
+
   const data = [
     {
-      name: 'Page A',
+      name: '25 Hz',
     
-      pv: pvA,
+      ค่าความชัน: pvA,
       amt: 2400,
     },
     {
-      name: 'Page B',
+      name: '50 Hz',
      
-      pv: pvB,
+      ค่าความชัน: pvB,
       amt: 2210,
     },
     {
-      name: 'Page C',
+      name: '75 Hz',
    
-      pv: pvC,
+      ค่าความชัน: pvC,
       amt: 2290,
     },
     {
       name: 'Page D',
    
-      pv: pvD,
+      ค่าความชัน: pvD,
       amt: 2000,
     },
     {
       name: 'Page E',
     
-      pv: pvG,
+      ค่าความชัน: pvG,
       amt: 2181,
     },
    
@@ -56,8 +77,9 @@ function App() {
 
 
     <div>
+{data12}
 
-
+{data6}
       <label>Page A:
         <input 
          type="number" 
